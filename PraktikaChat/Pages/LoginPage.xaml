@@ -1,0 +1,92 @@
+﻿<Page x:Class="PraktikaChat.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PraktikaChat.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="LoginPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.7*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Border x:Name="Mask" CornerRadius="125" Background="Wheat"
+                Width="250" Height="250" Grid.Column="1" Grid.Row="1"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Background="AliceBlue">
+            <Image x:Name="ImgUser" Source="/Images/DefaultProfilePicture.png" 
+                   Width="230" Height="230" Margin="15"
+                   Stretch="Fill">
+                <Image.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=Mask}"/>
+                </Image.OpacityMask>
+            </Image>
+            <TextBox x:Name="TBLogin"  Text="Login" FontSize="15"
+                     Margin="5" Width="350" Height="25"
+                     BorderBrush="SteelBlue"
+                     GotFocus="TBLogin_GotFocus" LostFocus="TBLogin_LostFocus"
+                     Foreground="LightGray"/>
+            <Border Margin="5" Width="350" Height="25">
+                <Grid>
+                    <PasswordBox x:Name="PBPassword"  FontSize="15"
+                                 BorderBrush="SteelBlue" Foreground="Black" 
+                                 GotFocus="PBPassword_GotFocus" LostFocus="PBPassword_LostFocus"
+                                 PasswordChar="*" Visibility="Hidden"/>
+                    <TextBox x:Name="TBPassword"  Text="Password" FontSize="15"
+                             Width="350" Height="25"
+                             BorderBrush="SteelBlue"
+                             GotFocus="TBPassword_GotFocus" LostFocus="TBPassword_LostFocus"
+                             Foreground="LightGray"/>
+                    <Button x:Name="BtnPasVisibility" Width="30" 
+                            HorizontalAlignment="Right"
+                            Background="Transparent" BorderBrush="Transparent"
+                            Visibility="Hidden" Click="BtnPasVisibility_Click">
+                        <Image Source="/Images/EyeImage.png" Stretch="Fill"/>
+                    </Button>
+                </Grid>
+            </Border>
+            <TextBox x:Name="TBPasswordRepeat"  Text="Repeat Password" FontSize="15"
+                     Margin="5" Width="350" Height="25"
+                     BorderBrush="SteelBlue"
+                     GotFocus="TBPasswordRepeat_GotFocus" LostFocus="TBPasswordRepeat_LostFocus"
+                     Foreground="LightGray"/>
+            <Button x:Name="BtnLogin" Height="40" Width="250" 
+                    Margin="20" Background="DarkTurquoise"
+                    Content="Register" FontSize="20" Foreground="SteelBlue"
+                    BorderBrush="SteelBlue"
+                    MouseEnter="BtnLogin_MouseEnter" MouseLeave="BtnLogin_MouseLeave" Click="BtnLogin_Click"/>
+        </StackPanel>
+        <Button x:Name="BtnNewImage" Grid.Row="1" Grid.Column="1" 
+                Height="80" Width="80"
+                HorizontalAlignment="Right" Margin="120, 0, 120, 50" 
+                Background="Transparent" BorderBrush="Transparent"
+                Opacity="0.9"
+                MouseEnter="BtnNewImage_MouseEnter" MouseLeave="BtnNewImage_MouseLeave"
+                Click="BtnNewImage_Click">
+            <Image Source="/Images/DocumentIcon.png"/>
+        </Button>
+        <Button x:Name="BtnChangeMode" Grid.Column="2" 
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Width="150" Height="90" Margin="20, 5"
+                Content="Log in" Background="Transparent" 
+                BorderBrush="Transparent" Foreground="SteelBlue"
+                FontSize="40" Click="BtnChangeMode_Click"/>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock x:Name="TBLoginError"
+                       Foreground="Crimson" FontSize="15"
+                       HorizontalAlignment="Center" Margin="10"
+                       TextWrapping="Wrap"/>
+            <TextBlock x:Name="TBPasswordError"
+                       Foreground="Crimson" FontSize="15"
+                       HorizontalAlignment="Center" Margin="10"
+                       TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</Page>
